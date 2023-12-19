@@ -1,0 +1,2 @@
+docker run -e INDEX_NAME="$INDEX_NAME" --network app-tier --name "$IMAGE_NAME" pyspark
+docker run -e INDEX_NAME="idx" --network app-tier --name "par" --mount source=out,target=/data_out pyspark

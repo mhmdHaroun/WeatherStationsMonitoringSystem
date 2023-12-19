@@ -1,0 +1,12 @@
+create the network bridge
+docker network create app-tier --driver bridge
+
+
+create kafka image
+docker run --network app-tier --name kafka-server -e ALLOW_PLAINTEXT_LISTENER=yes bitnami/kafka:latest
+
+//create topic (will be created anyway when sending)
+//kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic weather-forecast
+
+check
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic weather-forecast --from-beginning

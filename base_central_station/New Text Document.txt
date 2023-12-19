@@ -1,0 +1,2 @@
+docker run --network app-tier --name "$IMAGE_NAME" central
+docker run --network app-tier -e BATCH_SIZE="10" -e KAFKA_ENDPOINT="kafka-server:9092" -e KAFKA_TOPIC_NAME="weather-forecast" -e OUTPUT_FOLDER="/data_out" -e ELASTIC_INPUT="http://172.18.0.3:9200" -e ELASTIC_INDEX="idx" --name "consumers" --mount source=out,target=/data_out central
